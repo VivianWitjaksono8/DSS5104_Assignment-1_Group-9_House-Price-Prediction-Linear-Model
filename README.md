@@ -2,7 +2,7 @@
 
 This project/assignment develops a **highly accurate and interpretable housing price prediction model** using a **linear regression framework enhanced by advanced feature engineering and regularization techniques**.
 
-Rather than relying solely on complex black-box algorithms, this project demonstrates how **careful feature engineering and regularized linear models** can achieve **near state-of-the-art performance**.
+Rather than relying solely on complex black-box algorithms, this project demonstrates how **careful feature engineering and regularized linear models** can achieve **near good performance**.
 
 ---
 
@@ -61,7 +61,8 @@ The notebook contains the **complete modeling workflow**, including:
 - model development  
 - model validation  
 - diagnostic analysis  
-- benchmark comparison  
+- benchmark comparison
+- key insight of each model
 
 ---
 
@@ -310,7 +311,7 @@ project
 ├── figures
 │   ├── residual_plots
 │   ├── density_plots
-│   └── feature_importance
+│   └── feature_importance, etc
 │
 ├── requirements.txt
 └── README.md
@@ -333,7 +334,7 @@ Potential directions to further enhance the model:
 - Spatial lag regression models
 
 ### Advanced Machine Learning
-- Gradient Boosting (LightGBM, CatBoost)
+- Gradient Boosting (XGBoost)
 - Stacked ensemble learning
 
 ### Temporal & Market Signals
