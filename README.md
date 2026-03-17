@@ -17,18 +17,7 @@ Instead of jumping directly to complex machine learning models, the project focu
 - **regularized regression**
 - thorough **model diagnostics and validation**
 
-Through **six iterative feature engineering stages**:
-
-```
-Polynomial Features
-→ Location Signals
-→ Ratio Features
-→ KNN Spatial Signals
-→ Clustering
-→ Advanced Feature Design
-```
-
-the dataset was transformed into a **robust predictive modeling pipeline**, significantly improving the performance over the baseline model.
+Through **several feature engineering stages**, the dataset was transformed into a **robust predictive modeling pipeline**, significantly improving the performance over the baseline model.
 
 ---
 
@@ -194,7 +183,7 @@ Introduced:
 
 - polynomial features  
 - ratio variables  
-- interaction terms  
+- interaction terms, etc
 
 Performance improved to:
 
@@ -281,7 +270,7 @@ This project demonstrates the value of **combining domain-driven feature enginee
 ### Clone Repository
 
 ```
-git clone <repository-url>
+git clone <[repository-url](https://github.com/VivianWitjaksono8/DSS5104_Assignment-1_Group-9_House-Price-Prediction-Linear-Model)>
 ```
 
 ### Install Dependencies
