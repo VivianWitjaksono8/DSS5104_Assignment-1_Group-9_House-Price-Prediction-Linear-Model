@@ -1,4 +1,4 @@
-# 🏠 Residential Property Price Prediction
+# Residential Property Price Prediction
 
 This project/assignment develops a **highly accurate and interpretable housing price prediction model** using a **linear regression framework enhanced by advanced feature engineering and regularization techniques**.
 
@@ -6,7 +6,7 @@ Rather than relying solely on complex black-box algorithms, this project demonst
 
 ---
 
-# 📊 Project Overview
+# Project Overview
 
 The goal of this project is to build a **robust predictive model for residential property prices** using structured housing data.
 
@@ -21,7 +21,7 @@ Through **several feature engineering stages**, the dataset was transformed into
 
 ---
 
-# 📂 Project Assets
+# Project Assets
 
 ### Dataset
 ```
@@ -55,9 +55,9 @@ The notebook contains the **complete modeling workflow**, including:
 
 ---
 
-# ⚡ Key Achievements
+# Key Achievements
 
-### 📉 Performance Improvement
+### Performance Improvement
 
 Baseline model:
 
@@ -77,7 +77,7 @@ This represents approximately **40% reduction in prediction error** through syst
 
 ---
 
-### 🧠 Advanced Linear Modeling Techniques
+### Advanced Linear Modeling Techniques
 
 The project evaluates several **regularized linear regression models** to improve generalization and reduce overfitting:
 
@@ -101,7 +101,7 @@ The final model selected is **ElasticNet**, as it provides the best balance betw
 
 ---
 
-# 📈 Final Model Performance
+# Final Model Performance
 
 | Model | Test MAPE | R² | Notes |
 |------|-----------|----|------|
@@ -118,7 +118,7 @@ of the **XGBoost benchmark**, highlighting the strength of the engineered featur
 
 ---
 
-# 🏅 Key Predictors (ElasticNet Model)
+# Key Predictors (ElasticNet Model)
 
 | Feature | Importance | Interpretation |
 |-------|------|------|
@@ -142,7 +142,7 @@ indicates **diminishing marginal returns for extremely large homes**, reflecting
 
 ---
 
-# 📊 Residual & Diagnostic Analysis
+# Residual & Diagnostic Analysis
 
 Extensive diagnostic testing confirms the statistical reliability of the model.
 
@@ -166,9 +166,9 @@ For properties above **$1.5M**, the model shows a **slight conservative bias**, 
 
 ---
 
-# 🛠 Modeling Workflow
+# Modeling Workflow
 
-### 1️⃣ Baseline Linear Model
+### 1. Baseline Linear Model
 
 ```
 R² = 0.48
@@ -177,7 +177,7 @@ MAPE = 30.59%
 
 ---
 
-### 2️⃣ Feature Engineering
+### 2. Feature Engineering
 
 Introduced:
 
@@ -194,7 +194,7 @@ MAPE = 21.58%
 
 ---
 
-### 3️⃣ Spatial Feature Engineering
+### 3. Spatial Feature Engineering
 
 Added neighborhood intelligence using:
 
@@ -210,7 +210,7 @@ MAPE = 18.52%
 
 ---
 
-### 4️⃣ Regularized Regression
+### 4. Regularized Regression
 
 Models evaluated:
 
@@ -223,7 +223,7 @@ ElasticNet provided the **best bias–variance tradeoff**.
 
 ---
 
-### 5️⃣ Final Model Selection
+### 5. Final Model Selection
 
 **ElasticNet Regression**
 
@@ -234,7 +234,7 @@ MAPE = 18.43%
 
 ---
 
-### 6️⃣ Nonlinear Benchmark
+### 6. Nonlinear Benchmark
 
 To evaluate potential upper-bound performance, **XGBoost** was trained as a comparison model.
 
@@ -246,7 +246,7 @@ Only **1.19% improvement**, confirming that the linear model already captures mo
 
 ---
 
-# 📋 Executive Summary
+# Executive Summary
 
 Key insights from this project:
 
@@ -265,7 +265,7 @@ This project demonstrates the value of **combining domain-driven feature enginee
 
 ---
 
-# ⚙️ Getting Started
+# Getting Started
 
 ### Clone Repository
 
@@ -289,7 +289,7 @@ Assignment1_DSS5104_Group9.ipynb
 
 ---
 
-# 📂 Project Structure
+# Project Structure
 
 ```
 project
@@ -308,7 +308,7 @@ project
 
 ---
 
-# 🚀 Future Improvements
+# Future Improvements
 
 Potential directions to further enhance the model:
 
@@ -335,7 +335,7 @@ Potential directions to further enhance the model:
 - Graph-based neighborhood modeling
 - Neural spatial embeddings
 
-# ⚖️ Final Verdict
+# Final Verdict
 
 - **ElasticNet vs XGBoost**: Predictive accuracy is very close (~1.19% difference)
 - **Transparency**: ElasticNet is more interpretable and auditable
@@ -344,7 +344,7 @@ Potential directions to further enhance the model:
 
 ---
 
-# 👩‍💻 Authors
+# Authors
 
 **DSS5104 Group 9**  
 - Vivian Witjaksono – A0326440M  
