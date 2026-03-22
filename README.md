@@ -21,8 +21,6 @@ Through **several feature engineering stages**, the dataset was transformed into
 
 ---
 
-# Project Assets
-
 ### Dataset
 ```
 house_dataset.csv
