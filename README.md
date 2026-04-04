@@ -132,7 +132,7 @@ The project evaluates progressively more complex linear models:
 | Model | Test MAPE | R² |
 |------|-----------|----|
 | Baseline OLS | 30.59% | 0.48 |
-| Feature-Engineered Linear Models | ~18.2% | ~0.69 | (approximately)
+| Feature-Engineered Linear Models (approximately) | ~18.2% | ~0.69 |
 | **PolyRidge (Best Linear Model)** | **17.91%** | **0.70** |
 | XGBoost (Benchmark) | **17.22%** | **0.71** |
 
