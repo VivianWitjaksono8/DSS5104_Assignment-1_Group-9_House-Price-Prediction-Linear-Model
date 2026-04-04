@@ -132,7 +132,7 @@ The project evaluates progressively more complex linear models:
 | Model | Test MAPE | R² |
 |------|-----------|----|
 | Baseline OLS | 30.59% | 0.48 |
-| Feature-Engineered Linear Models | ~18.2% | ~0.69 |
+| Feature-Engineered Linear Models | ~18.2% | ~0.69 | (approximately)
 | **PolyRidge (Best Linear Model)** | **17.91%** | **0.70** |
 | XGBoost (Benchmark) | **17.22%** | **0.71** |
 
@@ -140,7 +140,7 @@ The project evaluates progressively more complex linear models:
 
 ## 4.2 Key Performance Insight
 
-- Feature engineering reduces error by **~41% from baseline**
+- Feature engineering reduces error by **~13% from baseline**
 - PolyRidge is only **~0.7% MAPE worse than XGBoost**
 - Linear models become **highly competitive with nonlinear models**
 
