@@ -258,15 +258,33 @@ While XGBoost slightly outperforms PolyRidge in accuracy, PolyRidge is preferred
 
 ---
 
-# Getting Started 
+# Getting Started
 
 ### Clone Repository
+
+```
 git clone <repository-url>
+```
+
 ### Install Dependencies
+
+```
 pip install -r requirements.txt
-### Run the Notebook Open:
+```
+
+### Run the Notebook
+
+Open:
+
+```
 Assignment1_DSS5104_Group9.ipynb
---- # Project Structure
+```
+
+---
+
+# 📂 Project Structure
+
+```
 project
 │
 ├── house_dataset.csv
@@ -275,10 +293,13 @@ project
 ├── figures
 │   ├── residual_plots
 │   ├── density_plots
-│   └── feature_importance, etc
+│   └── feature_importance
 │
 ├── requirements.txt
 └── README.md
+```
+
+---
 
 # Authors
 
