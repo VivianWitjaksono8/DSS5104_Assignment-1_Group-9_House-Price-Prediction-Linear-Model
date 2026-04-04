@@ -258,7 +258,7 @@ While XGBoost slightly outperforms PolyRidge in accuracy, PolyRidge is preferred
 
 ---
 
-# 12. Authors
+# Authors
 
 **DSS5104 Group 9**  
 - Vivian Witjaksono – A0326440M  
