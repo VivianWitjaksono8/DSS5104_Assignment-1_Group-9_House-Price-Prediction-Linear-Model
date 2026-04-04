@@ -263,7 +263,7 @@ While XGBoost slightly outperforms PolyRidge in accuracy, PolyRidge is preferred
 ### Clone Repository
 
 ```
-git clone <repository-url>
+git clone <repository-url> <https://github.com/VivianWitjaksono8/DSS5104_Assignment-1_Group-9_House-Price-Prediction-Linear-Model.git>
 ```
 
 ### Install Dependencies
