@@ -1,268 +1,264 @@
-# Residential Property Price Prediction
+# 🏠 Residential Property Price Prediction Using Linear Models with Advanced Feature Engineering
 
-This project/assignment develops a **highly accurate and interpretable housing price prediction model** using a **linear regression framework enhanced by advanced feature engineering and regularization techniques**.
+This project develops a **highly interpretable yet competitive housing price prediction model** using a **linear regression framework enhanced with advanced feature engineering, spatial signal extraction, and regularization techniques**.
 
-Rather than relying solely on complex black-box algorithms, this project demonstrates how **careful feature engineering and regularized linear models** can achieve **near good performance**.
-
----
-
-# Project Overview
-
-The goal of this project is to build a **robust predictive model for residential property prices** using structured housing data.
-
-Instead of jumping directly to complex machine learning models, the project focuses on:
-
-- progressive **feature engineering**
-- **spatial signal extraction**
-- **regularized regression**
-- thorough **model diagnostics and validation**
-
-Through **several feature engineering stages**, the dataset was transformed into a **robust predictive modeling pipeline**, significantly improving the performance over the baseline model.
+The study demonstrates that **carefully engineered features can significantly close the performance gap between linear and nonlinear models**, achieving results close to XGBoost while maintaining interpretability and stability.
 
 ---
 
-### Dataset
+# 1. Problem Statement
+
+Accurately predicting residential property prices is a critical task in real estate analytics. However, housing data is highly:
+
+- Nonlinear in structure  
+- Spatially dependent  
+- Sensitive to interaction effects  
+
+This project investigates whether **linear models, when properly engineered, can achieve performance comparable to nonlinear models** such as XGBoost while maintaining interpretability.
+
+---
+
+# 2. Dataset Description
 ```
 house_dataset.csv
 ```
 
-Contains residential housing attributes such as:
+The dataset contains structured housing market data, including:
 
-- living area size
-- property characteristics
-- neighborhood signals
-- location indicators
-- structural attributes
+### Structural Features
+- bedrooms, bathrooms, floors  
+- sqft_living, sqft_above, sqft_basement  
+- condition, view, waterfront  
 
----
+### Location Features
+- city  
+- zipcode  
+- neighborhood-derived signals  
 
-### Model Development Notebook
-```
-Assignment1_DSS5104_Group9.ipynb
-```
+### Temporal Features
+- house_age  
+- years_since_renovation  
 
-The notebook contains the **complete modeling workflow**, including:
-
-- data preprocessing  
-- feature engineering  
-- model development  
-- model validation  
-- diagnostic analysis  
-- benchmark comparison
-- key insight of each model
+### Engineered Features
+- spatial encodings  
+- interaction terms  
+- nonlinear transformations  
 
 ---
 
-# Key Achievements
+# 3. Methodology
 
-### Performance Improvement
+## 3.1 Data Preprocessing
+Key cleaning steps included:
 
-Baseline model:
+- Removal of duplicates  
+- Handling invalid values (e.g., price = 0, inconsistent sqft structure)  
+- Fixing inconsistent renovation records  
+- Filtering resale duplicates  
 
-```
-MAPE = 30.59%
-R²   = 0.48
-```
-
-Final model:
-
-```
-MAPE = 18.43%
-R²   = 0.70
-```
-
-This represents approximately **40% reduction in prediction error** through systematic feature engineering and model optimization.
+Final dataset size: **4,537 observations**
 
 ---
 
-### Advanced Linear Modeling Techniques
+## 3.2 Feature Engineering Strategy
 
-The project evaluates several **regularized linear regression models** to improve generalization and reduce overfitting:
+Feature engineering is the core contribution of this project and is categorized as follows:
 
-- **Ridge Regression (L2 regularization)**
-- **Lasso Regression (L1 regularization)**
-- **ElasticNet Regression (combined L1 + L2)**
-- **Huber Regression (robust to outliers)**
+### (A) Structural Features
+Direct housing attributes representing physical property characteristics.
 
-Additional modeling enhancements include:
+### (B) Nonlinear Transformations
+- log(sqft), sqrt(sqft), squared terms  
+- Stabilize skewed distributions and variance  
 
-- **KNN-based neighborhood price proxies**
-- **K-Means clustering for spatial segmentation**
-- **polynomial transformations**
-- **feature interaction terms**
+### (C) Spatial Signals
+- zipcode_price_signal (target encoding)  
+- city_price_signal  
+- neighbor_price_proxy (KNN-based)  
 
-The final model selected is **ElasticNet**, as it provides the best balance between:
+### (D) Interaction Features
+- sqft × condition  
+- sqft × view  
+- age × condition  
 
-- interpretability  
-- coefficient stability  
-- predictive performance  
+### (E) Domain-Based Features
+- lot_utilization  
+- effective_living  
+- avg_room_size  
 
----
-
-# Final Model Performance
-
-| Model | Test MAPE | R² | Notes |
-|------|-----------|----|------|
-| **ElasticNet** | **18.43%** | **0.70** | Final chosen interpretable model |
-| **XGBoost** | 17.24% | 0.71 | Nonlinear benchmark |
-
-Despite being a **linear model**, ElasticNet performs within:
-
-```
-1.19% MAPE difference
-```
-
-of the **XGBoost benchmark**, highlighting the strength of the engineered feature space.
+### (F) Clustering Features
+- KMeans-based spatial segmentation  
 
 ---
 
-# Key Predictors (ElasticNet Model)
+## 3.3 Modeling Approach
+
+The project evaluates progressively more complex linear models:
+
+### Baseline Model
+- Ordinary Least Squares (OLS)
+
+### Regularized Models
+- Ridge Regression (L2)  
+- Lasso Regression (L1)  
+- ElasticNet (L1 + L2)  
+- Bayesian Ridge  
+- Huber Regression  
+
+### Advanced Linear Models
+- Polynomial Ridge Regression (degree 2)  
+- Feature selection (RFECV)  
+- PCA + Ridge  
+- Spline-based regression  
+
+### Benchmark Model
+- XGBoost (tuned via RandomizedSearchCV)
+
+---
+
+## 3.4 Validation Strategy
+
+- Train-test split: 80/20  
+- 5-fold cross-validation  
+- Robust scaling for regularized models  
+- Target encoding using K-fold strategy (to prevent leakage)  
+
+---
+
+# 4. Key Results
+
+## 4.1 Model Performance Comparison
+
+| Model | Test MAPE | R² |
+|------|-----------|----|
+| Baseline OLS | 30.59% | 0.48 |
+| Feature-Engineered Linear Models | ~18.2% | ~0.69 |
+| **PolyRidge (Best Linear Model)** | **17.91%** | **0.70** |
+| XGBoost (Benchmark) | **17.22%** | **0.71** |
+
+---
+
+## 4.2 Key Performance Insight
+
+- Feature engineering reduces error by **~41% from baseline**
+- PolyRidge is only **~0.7% MAPE worse than XGBoost**
+- Linear models become **highly competitive with nonlinear models**
+
+---
+
+# 5. Final Model: PolyRidge Regression
+
+## 5.1 Why PolyRidge was selected
+
+PolyRidge (Ridge + Polynomial Features) is selected as the final model due to:
+
+- Best trade-off between bias and variance  
+- Strong generalization performance  
+- Low train-test performance gap  
+- Robustness to multicollinearity  
+- High interpretability  
+
+---
+
+## 5.2 Key Predictors
 
 | Feature | Importance | Interpretation |
-|-------|------|------|
-| zipcode_price_signal | 0.28 | Local market price anchor |
-| waterfront | 0.27 | Premium for waterfront properties |
-| sqft_living | 0.22 | Interior living space |
-| sqft_above | 0.15 | Above-ground area |
-| is_historic | 0.13 | Historic home premium |
-| neighbor_price_proxy | 0.10 | Neighborhood pricing influence |
-| view | 0.09 | Scenic desirability |
-| has_basement | 0.07 | Additional functional space |
-| condition | 0.07 | Property condition impact |
-
-### Nonlinear Effect
-
-```
-sqft_living_squared (-0.08)
-```
-
-indicates **diminishing marginal returns for extremely large homes**, reflecting realistic housing market behavior.
+|--------|------------|----------------|
+| zipcode_price_signal | Very High | Strongest location-based driver |
+| neighbor_price_proxy | Very High | Local market structure effect |
+| city_price_signal | High | City-level pricing influence |
+| sqft_living_log | High | Core structural size effect |
+| sqft_above_log | High | Above-ground area contribution |
+| waterfront | High | Premium property indicator |
+| view | Moderate | Aesthetic value contribution |
+| condition × sqft | Moderate | Interaction effect |
 
 ---
 
-# Residual & Diagnostic Analysis
+# 6. Model Diagnostics
 
-Extensive diagnostic testing confirms the statistical reliability of the model.
+## 6.1 Residual Analysis
+- Residuals are centered around zero  
+- No strong systematic bias detected  
+- Slight underprediction in luxury segment  
 
-### Residual Distribution
-Residuals follow a **near-normal distribution** with no major bias.
+## 6.2 Learning Curve Analysis
+- Performance stabilizes at ~17–18% MAPE  
+- Indicates diminishing returns beyond current feature set  
 
-### Homoscedasticity
-Variance remains relatively stable across prediction ranges.
+## 6.3 Multicollinearity
+- High VIF observed in spatial features  
+- Controlled using Ridge regularization  
 
-### Learning Curve
-Indicates **minimal overfitting** and good generalization.
-
-### Prediction Density
-Strong overlap between predicted and actual prices within the **core market range ($300K–$700K)**.
-
-### Luxury Segment Behavior
-For properties above **$1.5M**, the model shows a **slight conservative bias**, likely due to:
-
-- higher transaction variance  
-- fewer high-end observations  
+## 6.4 Heteroscedasticity
+- Significantly reduced after log transformation  
 
 ---
 
-# Executive Summary
+# 7. Benchmark Analysis: Linear vs XGBoost
 
-Key insights from this project:
+| Model | MAPE | R² | Interpretation |
+|------|------|----|---------------|
+| PolyRidge | 17.91% | 0.70 | Best linear model |
+| XGBoost | 17.22% | 0.71 | Nonlinear benchmark |
 
-✔ Feature engineering dramatically improves predictive accuracy  
-✔ Linear models can remain highly competitive with nonlinear models  
-✔ ElasticNet provides strong **interpretability + performance**
-
-Most influential drivers:
-
-- zipcode_price_signal  
-- waterfront  
-- living space variables  
-- neighborhood price signals  
-
-This project demonstrates the value of **combining domain-driven feature engineering with regularized regression techniques** for structured tabular datasets.
+### Key Insight:
+> The performance gap (~0.7% MAPE) shows that **feature engineering can significantly reduce the need for complex nonlinear models**.
 
 ---
 
-# Getting Started
+# 8. Key Insights
 
-### Clone Repository
+### 1. Location is the dominant pricing factor
+Spatial signals outperform structural variables in predictive power.
 
-```
-git clone <[repository-url](https://github.com/VivianWitjaksono8/DSS5104_Assignment-1_Group-9_House-Price-Prediction-Linear-Model)>
-```
+### 2. Feature engineering is the main performance driver
+Spatial encoding alone contributes the largest improvement.
 
-### Install Dependencies
+### 3. Linear models remain highly competitive
+With sufficient feature engineering, linear models approach nonlinear performance.
 
-```
-pip install -r requirements.txt
-```
-
-### Run the Notebook
-
-Open:
-
-```
-Assignment1_DSS5104_Group9.ipynb
-```
+### 4. Luxury segment is inherently difficult
+High-value properties show greater prediction variance and underestimation.
 
 ---
 
-# Project Structure
+# 9. Limitations
 
-```
-project
-│
-├── house_dataset.csv
-├── Assignment1_DSS5104_Group9.ipynb
-│
-├── figures
-│   ├── residual_plots
-│   ├── density_plots
-│   └── feature_importance, etc
-│
-├── requirements.txt
-└── README.md
-```
+- Limited granularity in spatial data (no latitude/longitude)  
+- Luxury segment underrepresentation  
+- No external macroeconomic features  
+- Linear assumption still limits extreme nonlinear patterns  
 
 ---
 
-# Future Improvements
+# 10. Future Work
 
-Potential directions to further enhance the model:
-
-### Feature Engineering
-- Explore alternative feature transformations
-- Incorporate interaction terms
-- Adapt based on model owner’s insights
-
-### Spatial Modeling
-- Use more granular location data (latitude & longitude)
-- Geographically Weighted Regression (GWR)
-- Spatial lag regression models
-
-### Advanced Machine Learning
-- Gradient Boosting (XGBoost)
-- Stacked ensemble learning
-
-### Temporal & Market Signals
-- Include economic indicators
-- Housing market cycles
-- Interest rates
-
-### Deep Learning for Spatial Representation
-- Graph-based neighborhood modeling
-- Neural spatial embeddings
-
-# Final Verdict
-
-- **ElasticNet vs XGBoost**: Predictive accuracy is very close (~1.19% difference)
-- **Transparency**: ElasticNet is more interpretable and auditable
-- **Practical Implementation**: Offers reliable, justifiable forecasts for real estate stakeholders
-- **Overall**: ElasticNet balances performance and interpretability, making it a strong choice for deployment
+- Incorporate geospatial coordinates and distance-based features  
+- Add macroeconomic indicators (interest rates, inflation)  
+- Explore graph-based spatial modeling  
+- Improve ensemble learning strategies  
+- Apply SHAP for interpretability  
 
 ---
 
-# Authors
+# 11. Conclusion
+
+This study demonstrates that **linear regression models, when enhanced with strong feature engineering and regularization, can achieve near state-of-the-art performance in housing price prediction**.
+
+While XGBoost slightly outperforms PolyRidge in accuracy, PolyRidge is preferred for deployment due to:
+
+- Strong interpretability  
+- Stability and robustness  
+- Minimal overfitting  
+- Transparent decision-making  
+
+### Final Conclusion:
+> PolyRidge provides the best balance between **accuracy, interpretability, and generalization**, making it the most suitable model for real-world real estate price prediction.
+
+---
+
+# 12. Authors
 
 **DSS5104 Group 9**  
 - Vivian Witjaksono – A0326440M  
